@@ -1,0 +1,144 @@
+:root {
+  --absolute-margin: 1em;
+  --margin-font-size: 2em;
+  --margin-line: 95%;
+}
+
+html {
+  height: 100%;
+  background: rgb(0, 0, 0);
+  backdrop-filter: blur(100px);
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body * {
+  padding: 0;
+  margin: 0;
+}
+
+.poster-container {
+  display: contents;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.171);
+  position: relative;
+}
+
+.border {
+  color: white;
+  font-size: var(--margin-font-size);
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.border.top:after,
+.border.bottom:after {
+  content: "";
+  display: inline-block;
+  height: 0.5em;
+  vertical-align: bottom;
+  margin-right: -100%;
+  margin-left: 1vw;
+  border-top: 2px solid rgb(255, 255, 255);
+  width: 100%;
+}
+
+.border.left:after,
+.border.right:after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: bottom;
+  width: 0.5em;
+  margin-top: 10px;
+  margin-bottom: -100%;
+  border-right: 2px solid rgb(255, 255, 255);
+}
+
+.border.top {
+  top: var(--absolute-margin);
+  left: var(--absolute-margin);
+  width: calc(
+    var(--margin-line) - var(--absolute-margin) - var(--margin-font-size)
+  );
+}
+
+.border.right {
+  right: var(--absolute-margin);
+  top: var(--absolute-margin);
+  height: calc(
+    var(--margin-line) - var(--absolute-margin) - var(--margin-font-size)
+  );
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.border.bottom {
+  right: var(--absolute-margin);
+  bottom: var(--absolute-margin);
+  width: calc(
+    var(--margin-line) - var(--absolute-margin) - var(--margin-font-size)
+  );
+  transform: rotate(-180deg);
+}
+
+.border.left {
+  left: var(--absolute-margin);
+  bottom: var(--absolute-margin);
+  height: calc(
+    var(--margin-line) - var(--absolute-margin) - var(--margin-font-size)
+  );
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(-180deg);
+}
+
+@media screen {
+  html,
+  body {
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-size: 18px;
+    font-family: Verdana, sans-serif;
+    line-height: 1.4;
+
+    overflow: hidden;
+  }
+
+  #page-wrap {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /*** canvas ***/
+
+  #canvas {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+  }
+
+  .curtain {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .curtain img,
+  .curtain canvas {
+    display: none;
+  }
+}
